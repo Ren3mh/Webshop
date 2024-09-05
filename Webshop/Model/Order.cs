@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +52,15 @@ namespace Webshop.Model
 			get { return email; }
 			set { email = value; }
 		}
+
+		private ObservableCollection<Product> orderProducts;
+
+		public ObservableCollection<Product> OrderProducts
+		{
+			get { return orderProducts; }
+			set { orderProducts = value; }
+		}
+
 
 
 		Order(int orderId, string deliveryStatus, string paymentMethod, bool paid, string email)
