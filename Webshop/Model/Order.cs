@@ -18,10 +18,10 @@ namespace Webshop.Model
 		}
 
 		
-		public enum delivStat {OrderPlaced, OnWay, Delivered }
-		private string deliveryStatus;
+		public enum delivStat {OrderPlaced, OnWay, Delivered, Anulled }
+		private int deliveryStatus;
 
-		public string DeliveryStatus
+		public int DeliveryStatus
 		{
 			get { return deliveryStatus; }
 			set { deliveryStatus = value; }
@@ -29,9 +29,9 @@ namespace Webshop.Model
 
 
 		public enum payMethod {Card, Cash, MobilePay}
-		private string paymentMethod;
+		private int paymentMethod;
 
-		public string PaymentMethod
+		public int PaymentMethod
 		{
 			get { return paymentMethod; }
 			set { paymentMethod = value; }
@@ -63,13 +63,24 @@ namespace Webshop.Model
 
 
 
-		Order(int orderId, string deliveryStatus, string paymentMethod, bool paid, string email)
+		Order(int orderId, int deliveryStatus, int paymentMethod, bool paid, string email)
 		{
 			OrderId = orderId;
 			DeliveryStatus = deliveryStatus;
 			PaymentMethod = paymentMethod;
 			Paid = paid;
 			Email = email;
+			OrderProducts = new ObservableCollection<Product>();
+		}
+
+		Order(int orderId, int deliveryStatus, int paymentMethod, bool paid, string email, ObservableCollection<Product> orderProducts)
+		{
+			OrderId = orderId;
+			DeliveryStatus = deliveryStatus;
+			PaymentMethod = paymentMethod;
+			Paid = paid;
+			Email = email;
+			OrderProducts = orderProducts;
 		}
 
 

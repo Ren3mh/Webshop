@@ -66,7 +66,20 @@ namespace Webshop.Model
 			PhoneNumber = phonenumber;	
 			Address = address;
 			Points = points;
+			CustomerOrders = new ObservableCollection<Order>();
 		}
+
+		Customer(string email, string name, string phonenumber, string address, int points, ObservableCollection<Order>orders )
+		{
+			Email = email;
+			Name = name;
+			PhoneNumber = phonenumber;
+			Address = address;
+			Points = points;
+			CustomerOrders = orders;
+		}
+
+
 
 		public string PK_Email()
 		{
