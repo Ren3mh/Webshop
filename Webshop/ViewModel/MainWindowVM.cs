@@ -5,12 +5,12 @@ using Webshop.Model;
 
 namespace Webshop.ViewModel
 {
-    internal class MainWindowViewModel : ViewModelBase
+    internal class MainWindowVM : ViewModelBase
     {
         // listen med "items" til viewlaget
         public ObservableCollection<Customer> Customers {  get; set; }
 
-        public MainWindowViewModel() 
+        public MainWindowVM() 
         {
             //til test
             Customers = new ObservableCollection<Customer>();

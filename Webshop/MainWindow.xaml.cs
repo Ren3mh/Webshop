@@ -12,12 +12,12 @@ namespace Webshop
     public partial class MainWindow : Window
     {
 
-        MainWindowViewModel vm;
+        MainWindowVM vm;
 
         public MainWindow()
         {
             InitializeComponent();
-            vm = new MainWindowViewModel();
+            vm = new MainWindowVM();
             DataContext = vm;
 		}
 
