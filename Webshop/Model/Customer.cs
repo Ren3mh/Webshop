@@ -9,6 +9,8 @@ namespace Webshop.Model
 {
     class Customer
     {
+
+		// hvorfor ikke bare public string Email { get; set; } ?
 		private string email;
 
 		public string Email
@@ -49,6 +51,7 @@ namespace Webshop.Model
 			set { points = value; }
 		}
 
+		// hvorfor ObservableCollection ?
 		private ObservableCollection<Order> customerOrders;
 
 		public ObservableCollection<Order> CustomerOrders
@@ -57,29 +60,24 @@ namespace Webshop.Model
 			set { customerOrders = value; }
 		}
 
+		public Customer()
+		{
+			Email = string.Empty;
+			Name = string.Empty;
+			PhoneNumber = string.Empty;
+			Address = string.Empty;
+			Points = 0;
+            CustomerOrders = new ObservableCollection<Order>();
+        }
 
-
-		Customer(string email, string name, string phonenumber, string address, int points)
+		public Customer(string email, string name, string phonenumber, string address, int points) : this()
 		{
 			Email = email;
 			Name = name;
 			PhoneNumber = phonenumber;	
 			Address = address;
 			Points = points;
-			CustomerOrders = new ObservableCollection<Order>();
 		}
-
-		Customer(string email, string name, string phonenumber, string address, int points, ObservableCollection<Order>orders )
-		{
-			Email = email;
-			Name = name;
-			PhoneNumber = phonenumber;
-			Address = address;
-			Points = points;
-			CustomerOrders = orders;
-		}
-
-
 
 		public string PK_Email()
 		{

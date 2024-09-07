@@ -12,53 +12,22 @@ namespace Webshop.Model
 
 
 		public enum Category {creme, pulver};
-		public Category Test;
-		
+		public Category _Category;
 
-		private string name;
+		public string Name { get; set; }
 
-		public string Name
-		{
-			get { return name; }
-			set { name = value; }
-		}
+		public string Description { get; set; }
 
-		private string description;
+		public double Price { get; set; }
 
-		public string Description
-		{
-			get { return description; }
-			set { description = value; }
-		}
+		public int Stock { get; set; }
 
-		private double price;
-
-		public double Price
-		{
-			get { return price; }
-			set { price = value; }
-		}
-
-		private int stock;
-
-		public int Stock
-		{
-			get { return stock; }
-			set { stock = value; }
-		}
-
-		private string imagePath;
-
-		public string ImagePath
-		{
-			get { return imagePath; }
-			set { imagePath = value; }
-		}
+		public string ImagePath { get; set; }
 
 		Product(int productId, int category, string name, string description, double price, int stock, string imagePath)
 		{
 			ProductId = productId;
-			test = 0; //category enum problemer
+			_Category = Category.creme;
 			Name = name;
 			Description = description;
 			Price = price;
