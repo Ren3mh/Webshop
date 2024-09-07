@@ -9,61 +9,24 @@ namespace Webshop.Model
 {
     class Order
     {
-		private int orderId;
-
-		public int OrderId
-		{
-			get { return orderId; }
-			set { orderId = value; }
-		}
-
+		public int OrderId { get; set; }
 		
-		public enum delivStat {OrderPlaced, OnWay, Delivered, Anulled }
-		private int deliveryStatus;
+		public enum DelivStat {OrderPlaced, OnWay, Delivered, Anulled }
 
-		public int DeliveryStatus
-		{
-			get { return deliveryStatus; }
-			set { deliveryStatus = value; }
-		}
+		public DelivStat DeliveryStatus { get; set; }
+		
+		public enum PayMethod {Card, Cash, MobilePay}
+		
+		public PayMethod PaymentMethod { get; set; }
 
+		public bool Paid { get; set; }
 
-		public enum payMethod {Card, Cash, MobilePay}
-		private int paymentMethod;
+		public string Email { get; set; }
 
-		public int PaymentMethod
-		{
-			get { return paymentMethod; }
-			set { paymentMethod = value; }
-		}
-
-		private bool paid;
-
-		public bool Paid
-		{
-			get { return paid; }
-			set { paid = value; }
-		}
-
-		private string email;
-
-		public string Email
-		{
-			get { return email; }
-			set { email = value; }
-		}
-
-		private ObservableCollection<Product> orderProducts;
-
-		public ObservableCollection<Product> OrderProducts
-		{
-			get { return orderProducts; }
-			set { orderProducts = value; }
-		}
+		public ObservableCollection<Product> OrderProducts { get; set; }
 
 
-
-		Order(int orderId, int deliveryStatus, int paymentMethod, bool paid, string email)
+		Order(int orderId, DelivStat deliveryStatus, PayMethod paymentMethod, bool paid, string email)
 		{
 			OrderId = orderId;
 			DeliveryStatus = deliveryStatus;
@@ -73,13 +36,14 @@ namespace Webshop.Model
 			OrderProducts = new ObservableCollection<Product>();
 		}
 
-		Order(int orderId, int deliveryStatus, int paymentMethod, bool paid, string email, ObservableCollection<Product> orderProducts)
+		Order(int orderId, 
+			DelivStat deliveryStatus, 
+			PayMethod paymentMethod, 
+			bool paid,
+			string email,
+			ObservableCollection<Product> orderProducts) : 
+			this(orderId, deliveryStatus, paymentMethod, paid, email)
 		{
-			OrderId = orderId;
-			DeliveryStatus = deliveryStatus;
-			PaymentMethod = paymentMethod;
-			Paid = paid;
-			Email = email;
 			OrderProducts = orderProducts;
 		}
 

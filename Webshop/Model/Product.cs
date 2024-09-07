@@ -8,17 +8,11 @@ namespace Webshop.Model
 {
     class Product
     {
-		private int productId;
-
-		public int ProductId
-		{
-			get { return productId; }
-			set { productId = value; }
-		}
+		public int ProductId { get; set; }
 
 
-		public enum enumCategory {creme, pulver};
-		enumCategory test;
+		public enum Category {creme, pulver};
+		public Category Test;
 		
 
 		private string name;
