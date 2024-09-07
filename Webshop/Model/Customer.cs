@@ -61,22 +61,28 @@ namespace Webshop.Model
 		}
 
 		public Customer()
+		{ }
+
+		public Customer(string email, string name, string phonenumber, string address)
 		{
-			Email = string.Empty;
-			Name = string.Empty;
-			PhoneNumber = string.Empty;
-			Address = string.Empty;
-			Points = 0;
+            Email = email;
+            Name = name;
+            PhoneNumber = phonenumber;
+            Address = address;
+            Points = 100; //starting points
             CustomerOrders = new ObservableCollection<Order>();
         }
 
-		public Customer(string email, string name, string phonenumber, string address, int points) : this()
+		public Customer(
+			string email, 
+			string name, 
+			string phonenumber, 
+			string address, int points, 
+			ObservableCollection<Order> customerOrders) : 
+			this(email, name, phonenumber, address)
 		{
-			Email = email;
-			Name = name;
-			PhoneNumber = phonenumber;	
-			Address = address;
 			Points = points;
+			CustomerOrders = customerOrders;
 		}
 
 		public string PK_Email()

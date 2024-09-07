@@ -12,10 +12,32 @@
             <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
         
-        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Login" FontSize="25" TextDecorations="Underline" />
-            <Label Content="_Email" VerticalAlignment="Bottom" Target="{Binding ElementName=userEmail}"/>
-            <TextBox x:Name="userEmail"/>
+        <!--Login-->
+        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="250">
+            <TextBlock Text="Login" FontSize="25" TextDecorations="Underline" HorizontalAlignment="Center"/>
+            <TextBlock Text="Email" Margin="0,40,0,0"/>
+            <TextBox x:Name="tbProfileEmail" Width="100" Text="{Binding loginEmail, UpdateSourceTrigger=PropertyChanged}" />
+            <Button 
+                x:Name="btnLogIn" Content="Log Ind" Margin="0,10,0,0"
+                IsEnabled="{Binding ElementName=tbProfileEmail, Path=Text.Length}">
+            </Button>
         </StackPanel>
-	</Grid>
+
+        <!--Create Profile-->
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="250">
+            <TextBlock Text="Opret Bruger" FontSize="25" TextDecorations="Underline" HorizontalAlignment="Center"/>
+            <TextBlock Text="Navn" Margin="0,40,0,0"/>
+            <TextBox x:Name="tbName" Width="100" HorizontalAlignment="Left" Text="{Binding Name}"/>
+            <TextBlock Text="Email" />
+            <TextBox x:Name="tbEmail" Width="100" HorizontalAlignment="Left" Text="{Binding Email}"/>
+            <TextBlock Text="Telefonnummner"/>
+            <TextBox x:Name="tbPhone" Width="100" HorizontalAlignment="Left" Text="{Binding Phonenumber}"/>
+            <TextBlock Text="Adresse"/>
+            <TextBox x:Name="tbAddress" Width="100" HorizontalAlignment="Left" Text="{Binding Address}"/>
+            <Button 
+                x:Name="btnCreateProfile" Content="Opret Bruger" Margin="0,10,0,0" 
+                Command="{Binding CreateProfileCommand}">
+            </Button>
+        </StackPanel>
+    </Grid>
 </Window>
