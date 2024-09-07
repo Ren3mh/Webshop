@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using Webshop.Model;
+using Webshop.ViewModel;
 
 namespace Webshop.View
 {
@@ -19,9 +9,13 @@ namespace Webshop.View
 	/// </summary>
 	public partial class CustomerView : Window
 	{
-		public CustomerView()
+		CustomerWindowVM vm;
+
+		public CustomerView(Customer customer)
 		{
 			InitializeComponent();
+			vm = new CustomerWindowVM(customer);
+			DataContext = vm;
 		}
 	}
 }

@@ -10,10 +10,11 @@
 		<TextBlock HorizontalAlignment="Left"
 				   Margin="547,88,0,0"
 				   TextWrapping="Wrap"
-				   Text="Points"
-				   VerticalAlignment="Top" />
+				   Text="{Binding Customer.Points}"
+				   VerticalAlignment="Top" 
+                   Width="30"/>
 		<ListView d:ItemsSource="{d:SampleData ItemCount=5}"
-				  Margin="175,160,274,312">
+				  Margin="105,392,344,80">
 			<ListView.View>
 			<GridView>
 				<GridViewColumn Header="Ordre Nr." />

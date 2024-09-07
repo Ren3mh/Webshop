@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Webshop.Model
 {
-    class Customer
+    public class Customer
     {
 
 		// hvorfor ikke bare public string Email { get; set; } ?

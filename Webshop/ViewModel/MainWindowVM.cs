@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 using Webshop.Model;
 
@@ -8,13 +9,9 @@ namespace Webshop.ViewModel
     {
         // listen med "items" til viewlaget
         public ObservableCollection<Customer> Customers {  get; set; }
-        
-        
 
         public MainWindowViewModel() 
         {
-            LoginCommand = new LoginCommand(this);
-
             //til test
             Customers = new ObservableCollection<Customer>();
             Customers.Add(new Customer
@@ -43,20 +40,24 @@ namespace Webshop.ViewModel
         private string phonenumber;
         private string address;
 
-        private string loginEmail;
+
 
         public void Register()
         {
             Customers.Add(new Customer(email, name, phonenumber, address));
         }
 
-        public void Login()
+        public bool Login(string email)
         {
-            LoginCommand.Execute(this);
+
+            if (Customers.Any(c => c.Email == email))
+            { return true; }
+
+            return false;
+
         }
 
-        public RelayCommand CreateProfileCommand => new RelayCommand(execute => Register());
-        public ICommand LoginCommand { get; }
+        //public RelayCommand RegisterCommand => new RelayCommand(execute => Login(email));
 
         public string Name
         {
@@ -94,17 +95,6 @@ namespace Webshop.ViewModel
                 OnPropertyChanged();
             }
         }
-
-        public string LoginEmail
-        {
-            get { return loginEmail; }
-            set
-            {
-                loginEmail = value;
-                OnPropertyChanged();
-            }
-        }
-
 
         //den valgte "ting" i viewlaget
 
