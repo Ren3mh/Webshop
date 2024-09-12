@@ -75,6 +75,30 @@
 			   VerticalAlignment="Top"
 			   TextDecorations="Underline"
 			   />
+        <Label Content="Betalings muligheder" HorizontalAlignment="Left" Margin="636,189,0,0" VerticalAlignment="Top"/>
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="599,61,10,247" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Produkt" />
+                    <GridViewColumn Header="Antal" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="1" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Slet">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="btn_DeleteProduct"
+							        Content="Slet" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Window>
