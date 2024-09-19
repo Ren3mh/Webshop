@@ -16,7 +16,7 @@ namespace Webshop.View
     {
         public ShoppingWindow()
         {
-            string cs = "Server=rene-server1.database.windows.net;Database=Webshop1;Trusted_Connection=True;";
+            string cs = "Server=rene-server1.database.windows.net;Database=Webshop1;Trusted_Connection=False;User Id=rene-server1Admin;Password=DatabaseEr1Fase!;";
             ProductRepository pr = new ProductRepository(cs);
             var products = new ObservableCollection<Product>(pr.GetAll());
             InitializeComponent();

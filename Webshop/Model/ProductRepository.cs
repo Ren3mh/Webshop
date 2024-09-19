@@ -37,7 +37,7 @@ namespace Webshop.Model
                             _Category = (Category)(int)reader["CategoryID"],
                             Name = (string)reader["ProductName"],
                             Description = (string)reader["Deskription"],
-                            Price = (double)reader["Price"],
+                            Price = Convert.ToDouble( reader["Price"] ),
                             Stock = (int)reader["Stock"],
                             ImagePath = (string)reader["ImagePath"]
                         });
