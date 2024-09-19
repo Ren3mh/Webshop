@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Webshop.Model;
 
 namespace Webshop.View
 {
@@ -13,6 +16,9 @@ namespace Webshop.View
     {
         public ShoppingWindow()
         {
+            string cs = "Server=rene-server1.database.windows.net;Database=Webshop1;Trusted_Connection=True;";
+            ProductRepository pr = new ProductRepository(cs);
+            var products = new ObservableCollection<Product>(pr.GetAll());
             InitializeComponent();
             bt_Pay.IsEnabled = false;
             String[] PaymentMethods = { "Kreditkort", "Mobilepay", "Paypal" };

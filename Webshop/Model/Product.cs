@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Webshop.Model
 {
+
+    public enum Category { creme, pulver };
+
     public class Product
     {
 		public int ProductId { get; set; }
-
-
-		public enum Category {creme, pulver};
+		
 		public Category _Category;
 
 		public string Name { get; set; }
@@ -34,6 +35,8 @@ namespace Webshop.Model
 			Stock = stock;
 			ImagePath = imagePath;
 		}
+
+		public Product() { }
 
 		public int PK_productId()
 		{
