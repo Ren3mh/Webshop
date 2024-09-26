@@ -30,7 +30,7 @@ namespace Webshop.View
         {
             bt_Pay.IsEnabled = cb_PaymentMethod_SelectionChanged != null;
         }
-
-        
+                
     }
+
 }
