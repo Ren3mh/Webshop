@@ -35,9 +35,9 @@ namespace Webshop.Model
                         products.Add(new Product
                         {
                             ProductId = (int)reader["ProductID"],
-                            _Category = (Category)(int)reader["CategoryID"],
+                            _Category = (Category)(int)reader["CategoryId"],
                             Name = (string)reader["ProductName"],
-                            Description = (string)reader["Deskription"],
+                            Description = (string)reader["Description"],
                             Price = Convert.ToDouble( reader["Price"] ),
                             Stock = (int)reader["Stock"],
                             ImagePath = (string)reader["ImagePath"]
