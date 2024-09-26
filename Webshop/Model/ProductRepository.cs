@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Webshop.Model;
+using System.Data.SQLite;
 
 namespace Webshop.Model
 {
@@ -20,14 +21,14 @@ namespace Webshop.Model
         public IEnumerable<Product> GetAll()
         {
             var products = new List<Product>();
-            string query = "SELECT * FROM PRODUCTS";
+            string query = "SELECT * FROM Products";
 
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
             {
-                SqlCommand command = new SqlCommand(query, connection);
+                SQLiteCommand command = new SQLiteCommand(query, connection);
                 connection.Open();
 
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
@@ -48,71 +49,71 @@ namespace Webshop.Model
             return products;
         }
 
-        //public Product GetById(int id)
-        //{
-        //    Product semester = null;
-        //    string query = "SELECT * FROM SEMESTER WHERE SemesterId = @SemesterId";
+        public Product GetById(int id)
+        {
+            Product semester = null;
+            string query = "SELECT * FROM SEMESTER WHERE SemesterId = @SemesterId";
 
-        //    using (SqlConnection connection = new SqlConnection(_connectionString))
-        //    {
-        //        SqlCommand command = new SqlCommand(query, connection);
-        //        command.Parameters.AddWithValue("@SemesterId", id);
-        //        connection.Open();
+            using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
+            {
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@SemesterId", id);
+                connection.Open();
 
-        //        using (SqlDataReader reader = command.ExecuteReader())
-        //        {
-        //            if (reader.Read())
-        //            {
-        //                semester = new Product
-        //                {
-        //                    SemesterId = (int)reader["SemesterId"],
-        //                    Number = (int)reader["Number"]
-        //                };
-        //            }
-        //        }
-        //    }
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        semester = new Product
+                        {
+                            //SemesterId = (int)reader["SemesterId"],
+                            //Number = (int)reader["Number"]
+                        };
+                    }
+                }
+            }
 
-        //    return semester;
-        //}
+            return semester;
+        }
 
-        //public void Add(Product semester)
-        //{
-        //    string query = "INSERT INTO SEMESTER (Number) VALUES (@Number)";
+        public void Add(Product semester)
+        {
+            string query = "INSERT INTO SEMESTER (Number) VALUES (@Number)";
 
-        //    using (SqlConnection connection = new SqlConnection(_connectionString))
-        //    {
-        //        SqlCommand command = new SqlCommand(query, connection);
-        //        command.Parameters.AddWithValue("@Number", semester.Number);
-        //        connection.Open();
-        //        command.ExecuteNonQuery();
-        //    }
-        //}
+            using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
+            {
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                //command.Parameters.AddWithValue("@Number", semester.Number);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
 
-        //public void Update(Product semester)
-        //{
-        //    string query = "UPDATE SEMESTER SET Number = @Number WHERE SemesterId = @SemesterId";
+        public void Update(Product semester)
+        {
+            string query = "UPDATE SEMESTER SET Number = @Number WHERE SemesterId = @SemesterId";
 
-        //    using (SqlConnection connection = new SqlConnection(_connectionString))
-        //    {
-        //        SqlCommand command = new SqlCommand(query, connection);
-        //        command.Parameters.AddWithValue("@Number", semester.Number);
-        //        command.Parameters.AddWithValue("@SemesterId", semester.SemesterId);
-        //        connection.Open();
-        //        command.ExecuteNonQuery();
-        //    }
-        //}
+            using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
+            {
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                //command.Parameters.AddWithValue("@Number", semester.Number);
+                //command.Parameters.AddWithValue("@SemesterId", semester.SemesterId);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
 
-        //public void Delete(int id)
-        //{
-        //    string query = "DELETE FROM SEMESTER WHERE SemesterId = @SemesterId";
+        public void Delete(int id)
+        {
+            string query = "DELETE FROM SEMESTER WHERE SemesterId = @SemesterId";
 
-        //    using (SqlConnection connection = new SqlConnection(_connectionString))
-        //    {
-        //        SqlCommand command = new SqlCommand(query, connection);
-        //        command.Parameters.AddWithValue("@SemesterId", id);
-        //        connection.Open();
-        //        command.ExecuteNonQuery();
-        //    }
-        //}
+            using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
+            {
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@SemesterId", id);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

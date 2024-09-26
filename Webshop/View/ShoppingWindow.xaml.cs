@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,7 +17,11 @@ namespace Webshop.View
     {
         public ShoppingWindow()
         {
-            string cs = "Server=rene-server1.database.windows.net;Database=Webshop1;Trusted_Connection=False;User Id=rene-server1Admin;Password=DatabaseEr1Fase!;";
+            //string cs = "Server=rene-server1.database.windows.net;Database=Webshop1;Trusted_Connection=False;User Id=rene-server1Admin;Password=DatabaseEr1Fase!;";
+
+            string projectDirectory = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "WebShopDB.db");
+            string cs = $"Data Source={projectDirectory}";
+
             ProductRepository pr = new ProductRepository(cs);
             var products = new ObservableCollection<Product>(pr.GetAll());
             InitializeComponent();
