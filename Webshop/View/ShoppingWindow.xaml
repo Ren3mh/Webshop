@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="ShoppingWindow" Height="450" Width="800">
     <Grid>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=25}"
+        <ListView ItemsSource="{Binding strings}"
 			  Margin="159,157,239,133">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Produkt navn" />
-                    <GridViewColumn Header="Pris" />
+                    <GridViewColumn Header="Produkt navn" DisplayMemberBinding="{Binding strings.0}"/>
+                    <GridViewColumn Header="Pris" DisplayMemberBinding="{Binding Product.Price}"/>
                     <GridViewColumn Header="På lager" />
                     <GridViewColumn Header="Tilføj til kurv">
                         <GridViewColumn.CellTemplate>

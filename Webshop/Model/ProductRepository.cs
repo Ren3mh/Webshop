@@ -34,12 +34,12 @@ namespace Webshop.Model
                     {
                         products.Add(new Product
                         {
-                            ProductId = (int)reader["ProductID"],
-                            _Category = (Category)(int)reader["CategoryId"],
+                            ProductId = Convert.ToInt32(reader["ProductID"]),
+                            _Category = (Category)Convert.ToInt32(reader["CategoryId"]),
                             Name = (string)reader["ProductName"],
                             Description = (string)reader["Description"],
                             Price = Convert.ToDouble( reader["Price"] ),
-                            Stock = (int)reader["Stock"],
+                            Stock = Convert.ToInt32(reader["Stock"]),
                             ImagePath = (string)reader["ImagePath"]
                         });
                     }
